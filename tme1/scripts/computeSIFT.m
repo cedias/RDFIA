@@ -5,15 +5,10 @@ function [sift] = computeSIFT(pt, s, Ig, Ior, Mg)
   k = 1;
   for i = 1 : s/4
     for j = 1 : s/4
-      r1 = (i - 1) * ps + pt(1)
-      r2 = r1 + ps - 1
-      c1 = (j - 1) * ps + pt(2)
-      c2 = c1 + ps - 1
-
-      ## xg1 = (i - 1) * ps + 1;
-      ## xg2 = xg1 + ps - 1;
-      ## yg1 = (j - 1) * ps + 1;
-      ## yg2 = yg1 + ps - 1;
+      r1 = (i - 1) * ps + pt(1);
+      r2 = r1 + ps - 1;
+      c1 = (j - 1) * ps + pt(2);
+      c2 = c1 + ps - 1;
 
       h = zeros(nbin, 1);
       for r = 0:3
@@ -25,9 +20,13 @@ function [sift] = computeSIFT(pt, s, Ig, Ior, Mg)
         end
       end
 
-      sift(k,:) = h
+      sift(k,:) = h;
       k += 1;
     end
   end
   sift = reshape(sift', 1, s * nbin);
+  sift/=norm(sift);
+  sift = min(sift,0.2);
+  sift/=norm(sift);
+
 end
