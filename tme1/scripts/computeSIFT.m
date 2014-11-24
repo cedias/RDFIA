@@ -25,6 +25,12 @@ function [sift] = computeSIFT(pt, s, Ig, Ior, Mg)
     end
   end
   sift = reshape(sift', 1, s * nbin);
+
+  if(norm(sift) < 0.4) 
+    sift = zeros(1,128);
+    return
+  end
+
   sift/=norm(sift);
   sift = min(sift,0.2);
   sift/=norm(sift);
