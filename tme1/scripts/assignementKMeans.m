@@ -1,6 +1,4 @@
-function [nc] = assignementKMeans(centers,points,nbCenters,ndim)
-
-minus = repmat(points,nbCenters,1) - reshape(repmat(centers,1,nbCenters)',ndim,ndim*nbCenters)';
-minusNorm = minus*minus'
-[val, nc] = min(minusNorm)
+function [nc] = assignementKMeans(points, centers)
+  sqDist = sqDist(points, centers);
+  [dummy, nc] = min(sqDist, [], 1);
 end

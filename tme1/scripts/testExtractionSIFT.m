@@ -8,8 +8,8 @@ function [ sift ] = testExtractionSIFT(I, name, s, delta)
   ## figure; imshow(Iy);
   ## figure; imshow(Ig);
 
-  sift = computeSIFT([11; 11], s, Ig, Ior, Mg);
+  sift = computeSIFT([60; 55], s, Ig, Ior, Mg);
 
   #r = denseSampling(I, s, delta);
-  visuSIFT(I, Ig,  Ior, [11; 11], name, s, sift);
+  visuSIFT(I, Ig,  Ior, [60; 55], name, s, sift);
 end

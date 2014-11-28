@@ -25,12 +25,12 @@ for i=1:size(cate,1)
     for k=1:ni
         namedes = listdes(k).name;
         namedes2 =strcat(pathDes,cate{i},'/',namedes);
-        load('-binary',namedes2);
+        load(namedes2);
         nbdes = size(sifts,2);
         ra = randperm(nbdes);
         
         
-        sifts = double(sifts);
+        sifts = double(sifts)';
 
         cptD = 0;
         
